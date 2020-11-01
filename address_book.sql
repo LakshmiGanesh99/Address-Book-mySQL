@@ -68,3 +68,93 @@ UPDATE address_book SET contact_type = 'Friend' WHERE first_name = 'Lakshmi';
 UPDATE address_book SET contact_type = 'Family' WHERE first_name = 'Priya';
 UPDATE address_book SET contact_type = 'Friend' WHERE first_name = 'Kalyan';
 UPDATE address_book SET contact_type = 'Friend' WHERE first_name = 'kartik';
+
+#UC12
+ DROP TABLE address_book;
+ 
+ 
+CREATE TABLE `Address_Details` (
+  `add_id` varchar(6) NOT NULL,
+  `address` varchar(250),
+  `city` varchar(150),
+  `state` varchar(150),
+  `pin` varchar(6),
+  PRIMARY KEY (`add_id`)
+);
+
+CREATE TABLE `Address_Book` (
+  `book_id` varchar(6) NOT NULL,
+  `Book_Name` varchar(150) NOT NULL,
+  `Contact_Type` varchar(150) NOT NULL,
+  PRIMARY KEY (`book_id`)
+);
+
+CREATE TABLE `Person_Details` (
+  `id` int unsigned auto_increment NOT NULL,
+  `first_name` varchar(150) NOT NULL,
+  `last_name` varchar(150) NOT NULL,
+  `phone` varchar(10) NOT NULL,
+  `email` varchar(250) NOT NULL,
+  `add_id` varchar(6) NOT NULL,
+  PRIMARY KEY (`id`),
+  foreign key (add_id) references `Address_Details`(add_id)
+);
+
+CREATE TABLE `Book_Person` (
+  `book_id` varchar(6) NOT NULL,
+  `id` int unsigned NOT NULL,
+    foreign key (book_id) references `Address_book`(book_id),
+	foreign key (id) references `person_details`(id)
+);
+
+INSERT INTO address_details(add_id, address, city, state, pin) VALUES 
+('ADD101', 'Flat', 'Hyderabad', 'Telangana', '500011'),
+('ADD102', 'Plot', 'Vizag', 'AP', '542111'),
+('ADD103', 'Hut', 'Pune', 'Maharashtra', '875111'),
+('ADD104', 'office', 'Mumbai', 'Maharashtra', '875262');
+
+INSERT INTO address_book(book_id,book_name,contact_type) VALUES
+('AB001', 'book_A', 'family'),
+('AB002', 'book_B', 'friend'),
+('AB003', 'book_A', 'office');
+
+INSERT INTO person_details(first_name,last_name,phone,email,add_id) VALUES
+('Miral','Modi','1231231231','abc@gmail.com','ADD104'),
+('Mula','Venkat','9879879879','def@gmail.com','ADD102'),
+('Bhargav','Mankala','9639639639','cba@gmail.com','ADD101'),
+('Koushik','Mankala','3693693693','fed@gmail.com','ADD101'),
+('Nishant','Chauhan','4564564564','xyz@gmail.com','ADD103');
+
+INSERT INTO book_person(book_id,id) VALUES
+('AB001',3),
+('AB001',4),
+('AB002',5),
+('AB003',5),
+('AB003',1),
+('AB002',2);
+
+SELECT * 
+FROM person_details left Join address_details
+ON person_details.add_id = address_details.add_id
+HAVING state = 'AP';
+
+SELECT state,COUNT(*)
+FROM person_details left Join address_details
+ON person_details.add_id = address_details.add_id
+GROUP BY state;
+
+SELECT city,COUNT(*)
+FROM person_details left Join address_details
+ON person_details.add_id = address_details.add_id
+GROUP BY city;
+
+SELECT city,first_name
+FROM person_details left Join address_details
+ON person_details.add_id = address_details.add_id
+HAVING city = 'Hyderabad'
+ORDER BY first_name;
+
+SELECT contact_type, count(*)
+FROM address_book JOIN book_person
+ON address_book.book_id = book_person.book_id
+GROUP BY contact_type;
