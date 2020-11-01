@@ -31,3 +31,5 @@ UPDATE address_book
 SET city = 'Hyderabad', zip = '588987'
 WHERE first_name = 'Lakshmi';
 
+#UC5 ability to delete a persons contact using persons contac name
+DELETE FROM address_book WHERE first_name = 'mln'; 
