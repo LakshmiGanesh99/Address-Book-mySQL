@@ -58,3 +58,6 @@ UPDATE address_book SET profession = 'Actor' WHERE first_name = 'Priya';
 UPDATE address_book SET profession = 'Doctor' WHERE first_name = 'Kalyan';
 UPDATE address_book SET profession = 'Doctor' WHERE first_name = 'kartik';
 
+
+#UC10 Ability to get number of contact persons i.e. count by type(profession)
+SELECT COUNT(profession) FROM address_book;
