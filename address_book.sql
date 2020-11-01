@@ -24,3 +24,10 @@ INSERT address_book (first_name, last_name, address, city, state, zip, phone_num
 ('Lakshmi', 'Ganesh', 'old gajuwaka', 'vizag', 'ap', '530036','9494691188', 'klg@klg.com'),
 ('Priya', 'K', 'old gajuwaka', 'mumbai', 'mh', '530066','9882763875', 'pl@pl.com'),
 ('mln', 'b', 'guargon', 'guargon', 'haryana', '530044','9494691888', 'mln@mln.com');
+
+#UC4 updating or editing existing contact person using their name
+SET SQL_SAFE_UPDATES=0;
+UPDATE address_book 
+SET city = 'Hyderabad', zip = '588987'
+WHERE first_name = 'Lakshmi';
+
