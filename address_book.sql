@@ -61,3 +61,10 @@ UPDATE address_book SET profession = 'Doctor' WHERE first_name = 'kartik';
 
 #UC10 Ability to get number of contact persons i.e. count by type(profession)
 SELECT COUNT(profession) FROM address_book;
+
+#UC11 Ability to add Friend and family to each contact by adding a new column of name contact type
+ALTER TABLE address_book ADD contact_type VARCHAR(50);
+UPDATE address_book SET contact_type = 'Friend' WHERE first_name = 'Lakshmi';
+UPDATE address_book SET contact_type = 'Family' WHERE first_name = 'Priya';
+UPDATE address_book SET contact_type = 'Friend' WHERE first_name = 'Kalyan';
+UPDATE address_book SET contact_type = 'Friend' WHERE first_name = 'kartik';
