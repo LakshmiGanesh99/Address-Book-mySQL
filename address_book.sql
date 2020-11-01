@@ -50,3 +50,11 @@ SELECT * FROM address_book WHERE city = 'mumbai' ORDER BY first_name ASC ;
 INSERT address_book (first_name, last_name, address, city, state, zip, phone_number, emailId) VALUES   ## inserted these data for more reference
 ('Kalyan', 'K', 'anderi', 'mumbai', 'mh', '530066','9882763845', 'pl@p.com'),
 ('kartik', 'b', 'daravi', 'mumbai', 'mh', '530044','9494631888', 'mlk@mln.com');
+
+#UC9 Ability to identify each Address Book with name and Type. adding a column named TYPE(profession) to the table 
+ALTER TABLE address_book ADD profession VARCHAR(50);
+UPDATE address_book SET profession = 'Doctor' WHERE first_name = 'Lakshmi';
+UPDATE address_book SET profession = 'Actor' WHERE first_name = 'Priya';
+UPDATE address_book SET profession = 'Doctor' WHERE first_name = 'Kalyan';
+UPDATE address_book SET profession = 'Doctor' WHERE first_name = 'kartik';
+
