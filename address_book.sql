@@ -43,3 +43,10 @@ SELECT COUNT(city)
 FROM address_book;
 SELECT COUNT(state)
 FROM address_book;
+
+#UC8 Ability to retrieve entries sorted alphabetically by Person’s name for a given city
+SELECT * FROM address_book WHERE city = 'mumbai' ORDER BY first_name ASC ;
+
+INSERT address_book (first_name, last_name, address, city, state, zip, phone_number, emailId) VALUES   ## inserted these data for more reference
+('Kalyan', 'K', 'anderi', 'mumbai', 'mh', '530066','9882763845', 'pl@p.com'),
+('kartik', 'b', 'daravi', 'mumbai', 'mh', '530044','9494631888', 'mlk@mln.com');
