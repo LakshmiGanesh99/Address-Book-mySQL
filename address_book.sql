@@ -37,3 +37,9 @@ DELETE FROM address_book WHERE first_name = 'mln';
 #UC6 Ability to Retrieve Person belonging to a City or State from the Address Book
 SELECT * FROM address_book WHERE city = 'mumbai';
 SELECT * FROM address_book WHERE state = 'ap';
+
+#UC7 Ability to understand the size of address book by City and State
+SELECT COUNT(city)
+FROM address_book;
+SELECT COUNT(state)
+FROM address_book;
